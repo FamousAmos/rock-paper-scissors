@@ -1,7 +1,8 @@
+let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 const options = ["Rock", "Paper", "Scissors"];
-// let playerSelection;
+let buttons = document.querySelectorAll(".button");
 
 function computerPlay() {
   const selection = Math.floor(Math.random() * 100) % 3;
@@ -41,15 +42,10 @@ function checkWinner() {
   }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playerSelection = window.prompt("Select Rock, Paper, or Scissors");
-
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-
-  console.log(checkWinner());
-}
-
-game();
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const selection = button.querySelector("img");
+    playerSelection = selection.alt;
+    console.log(playerSelection);
+  });
+});
